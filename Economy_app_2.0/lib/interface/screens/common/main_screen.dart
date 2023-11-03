@@ -1,7 +1,7 @@
 import 'package:app_with_apps/core/constants/app_constants.dart';
 import 'package:app_with_apps/core/exports/exports.dart';
 import 'package:app_with_apps/core/localization/app_localization.dart';
-import 'package:app_with_apps/interface/screens/pages/service/pages_service.dart';
+import 'package:app_with_apps/interface/screens/common/pages/service/pages_service.dart';
 import 'package:app_with_apps/interface/screens/widgets/custom_drawer.dart';
 
 class MainScreen extends StatefulWidget {

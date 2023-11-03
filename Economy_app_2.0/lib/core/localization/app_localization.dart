@@ -30,6 +30,16 @@ class AppLocalizations {
         AppLocalizations();
   }
 
+  // auth
+  String get signIn => Intl.message('Sign in');
+  String get signUp => Intl.message('Sign up');
+  String get next => Intl.message('Next');
+  String get back => Intl.message('Back');
+  String get go => Intl.message('go');
+  String get setCountry => Intl.message('Set country');
+  String get setName => Intl.message('Set name');
+  String get setWalue => Intl.message('Set name');
+
   String get appName => Intl.message('Economy app');
   String get empty => Intl.message('');
   // Drawer

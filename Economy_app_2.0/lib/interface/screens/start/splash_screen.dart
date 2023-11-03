@@ -1,6 +1,8 @@
 import 'package:app_with_apps/core/exports/exports.dart';
 import 'package:app_with_apps/core/localization/app_localization.dart';
+import 'package:app_with_apps/core/manager/get.it/app_provider.dart';
 import 'package:app_with_apps/interface/routes/app_routes.dart';
+import 'package:get_it/get_it.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,7 +21,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _goToNext() {
-    Navigator.of(context).popAndPushNamed(AppRoutes.apps);
+    if (GetIt.I.get<AppProvider>().loggined) {
+      Navigator.of(context).popAndPushNamed(AppRoutes.apps);
+    } else {
+      Navigator.of(context).popAndPushNamed(AppRoutes.signInScreen);
+    }
   }
 
   @override
