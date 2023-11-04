@@ -1,6 +1,7 @@
 import 'package:app_with_apps/core/exports/exports.dart';
 import 'package:app_with_apps/core/models/class/historyelement_class.dart';
 import 'package:app_with_apps/core/models/enum/history_state.dart';
+import 'package:app_with_apps/core/utils/constants/constants_uikit.dart';
 import 'package:app_with_apps/interface/screens/widgets/note_widget.dart';
 
 class HistoryPage extends StatefulWidget {
@@ -38,9 +39,9 @@ class _HistoryPageState extends State<HistoryPage> {
 
   Color getCurrentButtonColor({required HistoryState state}) {
     if (state == pageState) {
-      return Colors.purple;
+      return UTILSConstants.purple;
     }
-    return Colors.grey;
+    return UTILSConstants.grey;
   }
 
   @override

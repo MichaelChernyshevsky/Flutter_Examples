@@ -2,7 +2,7 @@ import 'package:app_with_apps/interface/screens/auth/setuser_screen.dart';
 import 'package:app_with_apps/interface/screens/auth/signup_screen.dart';
 import 'package:app_with_apps/interface/screens/auth/singin_screen.dart';
 import 'package:app_with_apps/interface/screens/common/main_screen.dart';
-import 'package:app_with_apps/interface/screens/common/screen.dart';
+import 'package:app_with_apps/interface/future/screen.dart';
 import 'package:app_with_apps/interface/screens/start/splash_screen.dart';
 import 'package:flutter/material.dart';
 

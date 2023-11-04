@@ -43,7 +43,7 @@ class _SignInScreenState extends State<SignInScreen> {
               CustomButton(
                 padding: getPadding(left: 100, right: 100, top: 40, bottom: 90),
                 text: AppLocalizations.current.signIn,
-                color: Colors.purple,
+                color: UTILSConstants.purple,
                 tap: signIn,
               ),
               Padding(

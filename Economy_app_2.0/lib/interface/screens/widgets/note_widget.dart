@@ -1,5 +1,6 @@
 import 'package:app_with_apps/core/exports/exports.dart';
 import 'package:app_with_apps/core/models/class/historyelement_class.dart';
+import 'package:app_with_apps/core/utils/constants/constants_uikit.dart';
 import 'package:app_with_apps/interface/uikit/container.dart';
 
 class Note extends StatelessWidget {
@@ -22,7 +23,7 @@ class Note extends StatelessWidget {
             child: Text('12.09.2023'),
           ),
           CustomContainer(
-            color: Colors.white,
+            color: UTILSConstants.white,
             height: 100,
             width: 300,
             widget: Row(
