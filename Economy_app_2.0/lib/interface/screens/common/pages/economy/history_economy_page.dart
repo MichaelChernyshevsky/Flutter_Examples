@@ -1,8 +1,10 @@
 import 'package:app_with_apps/core/exports/exports.dart';
+import 'package:app_with_apps/core/localization/app_localization.dart';
 import 'package:app_with_apps/core/models/class/historyelement_class.dart';
 import 'package:app_with_apps/core/models/enum/history_state.dart';
 import 'package:app_with_apps/core/utils/constants/constants_uikit.dart';
 import 'package:app_with_apps/core/utils/utils.dart';
+import 'package:app_with_apps/interface/screens/widgets/custom_bottom.dart';
 import 'package:app_with_apps/interface/screens/widgets/note_widget.dart';
 
 class HistoryEconomyPage extends StatefulWidget {
@@ -45,17 +47,35 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
     return UTILSConstants.grey;
   }
 
+  void goToCreate() => print('+');
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Padding(
           padding: getPadding(top: 10),
-          child: ListView.builder(
-            itemCount: elements.length,
-            itemBuilder: (context, index) {
-              return Note(element: elements[index]);
-            },
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  CustomButton(
+                    color: UTILSConstants.white,
+                    text: AppLocalizations.current.add,
+                    tap: goToCreate,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: getVerticalSize(100),
+                child: ListView.builder(
+                  itemCount: elements.length,
+                  itemBuilder: (context, index) {
+                    return Note(element: elements[index]);
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),

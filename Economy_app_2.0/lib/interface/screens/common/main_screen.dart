@@ -18,27 +18,12 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  late List<Widget> _history;
-
-  @override
-  void initState() {
-    getPagesList();
-    super.initState();
-  }
-
   void changeFunctions() => setState(() {
         GetIt.I.get<AppProvider>().changeFunctions();
-        getPagesList();
       });
 
   void changePage(int index) => setState(
         () => _selectedIndex = index,
-      );
-
-  void getPagesList() => setState(
-        () => _history = GetIt.I.get<AppProvider>().appIs == Functions.economy
-            ? PagesService.pages_economy
-            : PagesService.pages_todo,
       );
 
   @override
@@ -63,7 +48,7 @@ class _MainScreenState extends State<MainScreen> {
 
       body: Stack(
         children: [
-          _history[_selectedIndex],
+          GetIt.I.get<AppProvider>().pages[_selectedIndex],
         ],
       ),
       bottomNavigationBar: Container(

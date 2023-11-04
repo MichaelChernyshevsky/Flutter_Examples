@@ -55,6 +55,8 @@ class AppLocalizations {
   String get sortByDate => Intl.message('By date');
   String get sortMin => Intl.message('Min -> Max');
   String get sortMax => Intl.message('Max -> Min');
+  //
+  String get add => Intl.message('Add');
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
