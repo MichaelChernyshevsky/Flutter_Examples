@@ -2,16 +2,17 @@ import 'package:app_with_apps/core/exports/exports.dart';
 import 'package:app_with_apps/core/models/class/historyelement_class.dart';
 import 'package:app_with_apps/core/models/enum/history_state.dart';
 import 'package:app_with_apps/core/utils/constants/constants_uikit.dart';
+import 'package:app_with_apps/core/utils/utils.dart';
 import 'package:app_with_apps/interface/screens/widgets/note_widget.dart';
 
-class HistoryPage extends StatefulWidget {
-  const HistoryPage({super.key});
+class HistoryEconomyPage extends StatefulWidget {
+  const HistoryEconomyPage({super.key});
 
   @override
-  State<HistoryPage> createState() => _HistoryPageState();
+  State<HistoryEconomyPage> createState() => _HistoryEconomyPageState();
 }
 
-class _HistoryPageState extends State<HistoryPage> {
+class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
   HistoryState pageState = HistoryState.all;
 
   final List<HistoryElement> initialList = [
@@ -48,11 +49,14 @@ class _HistoryPageState extends State<HistoryPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: ListView.builder(
-          itemCount: elements.length,
-          itemBuilder: (context, index) {
-            return Note(element: elements[index]);
-          },
+        body: Padding(
+          padding: getPadding(top: 10),
+          child: ListView.builder(
+            itemCount: elements.length,
+            itemBuilder: (context, index) {
+              return Note(element: elements[index]);
+            },
+          ),
         ),
       ),
     );

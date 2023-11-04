@@ -1,8 +1,10 @@
 import 'package:app_with_apps/core/exports/exports.dart';
 import 'package:app_with_apps/core/localization/app_localization.dart';
 import 'package:app_with_apps/core/manager/get.it/app_provider.dart';
+import 'package:app_with_apps/core/utils/utils.dart';
 import 'package:app_with_apps/interface/routes/app_routes.dart';
 import 'package:get_it/get_it.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -35,7 +37,11 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           children: [
             const Spacer(),
-            const Text('Some'),
+            SvgPicture.asset(
+              'assets/money-bag-pixel-art_505135-55.jpg.svg',
+              height: getVerticalSize(100),
+              width: getHorizontalSize(100),
+            ),
             const Spacer(),
             Padding(
               padding: const EdgeInsets.only(bottom: 25),

@@ -1,0 +1,4 @@
+enum Functions {
+  todo,
+  economy,
+}
