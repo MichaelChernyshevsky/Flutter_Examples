@@ -1,7 +1,4 @@
-import 'package:app_with_apps/core/exports/exports.dart';
-import 'package:app_with_apps/core/models/class/historyelement_class.dart';
-import 'package:app_with_apps/core/utils/constants/constants_uikit.dart';
-import 'package:app_with_apps/interface/uikit/container.dart';
+import 'package:app_with_apps/interface/exports/screens_exports.dart';
 
 class Note extends StatelessWidget {
   const Note({

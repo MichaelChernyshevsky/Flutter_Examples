@@ -1,10 +1,4 @@
-import 'package:app_with_apps/core/exports/exports.dart';
-import 'package:app_with_apps/core/localization/app_localization.dart';
-import 'package:app_with_apps/core/manager/get.it/app_provider.dart';
-import 'package:app_with_apps/core/utils/utils.dart';
-import 'package:app_with_apps/interface/routes/app_routes.dart';
-import 'package:get_it/get_it.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:app_with_apps/interface/exports/screens_exports.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

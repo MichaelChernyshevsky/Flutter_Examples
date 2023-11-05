@@ -1,7 +1,4 @@
-import 'package:app_with_apps/core/exports/exports.dart';
-import 'package:app_with_apps/core/utils/utils.dart';
-import 'package:app_with_apps/interface/uikit/container.dart';
-import 'package:app_with_apps/interface/uikit/text.dart';
+import 'package:app_with_apps/interface/exports/screens_exports.dart';
 
 class CustomButton extends StatefulWidget {
   const CustomButton({

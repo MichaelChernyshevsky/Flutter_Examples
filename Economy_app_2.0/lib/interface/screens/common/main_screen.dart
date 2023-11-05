@@ -1,12 +1,4 @@
-import 'package:app_with_apps/core/constants/app_constants.dart';
-import 'package:app_with_apps/core/exports/exports.dart';
-import 'package:app_with_apps/core/localization/app_localization.dart';
-import 'package:app_with_apps/core/manager/get.it/app_provider.dart';
-import 'package:app_with_apps/core/models/enum/functions_enum.dart';
-import 'package:app_with_apps/core/utils/constants/constants_uikit.dart';
-import 'package:app_with_apps/core/utils/utils.dart';
-import 'package:app_with_apps/interface/screens/common/pages/service/pages_service.dart';
-import 'package:get_it/get_it.dart';
+import 'package:app_with_apps/interface/exports/screens_exports.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

@@ -1,11 +1,4 @@
-import 'package:app_with_apps/core/exports/exports.dart';
-import 'package:app_with_apps/core/localization/app_localization.dart';
-import 'package:app_with_apps/core/models/class/historyelement_class.dart';
-import 'package:app_with_apps/core/models/enum/history_state.dart';
-import 'package:app_with_apps/core/utils/constants/constants_uikit.dart';
-import 'package:app_with_apps/core/utils/utils.dart';
-import 'package:app_with_apps/interface/screens/widgets/custom_bottom.dart';
-import 'package:app_with_apps/interface/screens/widgets/note_widget.dart';
+import 'package:app_with_apps/interface/exports/screens_exports.dart';
 
 class HistoryEconomyPage extends StatefulWidget {
   const HistoryEconomyPage({super.key});

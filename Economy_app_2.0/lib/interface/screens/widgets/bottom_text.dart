@@ -1,8 +1,4 @@
-import 'package:app_with_apps/core/exports/exports.dart';
-import 'package:app_with_apps/core/localization/app_localization.dart';
-import 'package:app_with_apps/core/utils/enum/text_enum.dart';
-import 'package:app_with_apps/core/utils/utils.dart';
-import 'package:app_with_apps/interface/uikit/text.dart';
+import 'package:app_with_apps/interface/exports/screens_exports.dart';
 
 class BottomText extends StatefulWidget {
   const BottomText({

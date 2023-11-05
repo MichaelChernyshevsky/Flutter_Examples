@@ -1,12 +1,4 @@
-import 'package:app_with_apps/core/localization/app_localization.dart';
-import 'package:app_with_apps/core/utils/enum/text_enum.dart';
-import 'package:app_with_apps/core/utils/utils.dart';
-import 'package:app_with_apps/interface/routes/app_routes.dart';
-import 'package:app_with_apps/interface/screens/widgets/bottom_text.dart';
-import 'package:app_with_apps/interface/screens/widgets/custom_bottom.dart';
-import 'package:app_with_apps/interface/uikit/text.dart';
-import 'package:app_with_apps/interface/uikit/textField.dart';
-import 'package:flutter/material.dart';
+import 'package:app_with_apps/interface/exports/screens_exports.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
