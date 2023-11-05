@@ -10,6 +10,8 @@ class NewsEconomyPage extends StatefulWidget {
 class _NewsEconomyPageState extends State<NewsEconomyPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const SafeArea(
+      child: Scaffold(),
+    );
   }
 }

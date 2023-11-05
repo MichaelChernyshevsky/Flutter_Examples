@@ -1,4 +1,4 @@
-enum ToDoState {
+enum ToDoSortState {
   all,
   prioritet,
   priority,

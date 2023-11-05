@@ -23,7 +23,7 @@ class _MainScreenState extends State<MainScreen> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.current.appName),
+        title: GetIt.I.get<AppProvider>().getAppBarTitle,
         actions: [
           Padding(
             padding: getPadding(right: 20),
@@ -44,17 +44,11 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
       bottomNavigationBar: Container(
-        margin: const EdgeInsets.all(20),
+        width: getHorizontalSize(100),
+        margin: const EdgeInsets.all(30),
         height: size.width * .155,
         decoration: BoxDecoration(
           color: UTILSConstants.white,
-          // boxShadow: [
-          //   BoxShadow(
-          //     color: Colors.black.withOpacity(.15),
-          //     blurRadius: 30,
-          //     offset: const Offset(0, 10),
-          //   ),
-          // ],
           borderRadius: BorderRadius.circular(50),
         ),
         child: ListView.builder(

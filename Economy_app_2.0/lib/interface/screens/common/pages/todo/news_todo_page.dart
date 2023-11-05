@@ -10,6 +10,8 @@ class NewsToDoPage extends StatefulWidget {
 class _NewsToDoPageState extends State<NewsToDoPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const SafeArea(
+      child: Scaffold(),
+    );
   }
 }

@@ -1,4 +1,4 @@
-enum HistoryState {
+enum EconomySortState {
   all,
   byDate,
   min,

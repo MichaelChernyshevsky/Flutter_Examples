@@ -40,7 +40,9 @@ class AppLocalizations {
   String get setName => Intl.message('Set name');
   String get setWalue => Intl.message('Set name');
 
-  String get appName => Intl.message('Economy app');
+  String get economy => Intl.message('Economy');
+  String get todo => Intl.message('ToDo');
+
   String get empty => Intl.message('');
   // Drawer
   String get curse => Intl.message('Current Curse');

@@ -8,14 +8,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    Timer(const Duration(seconds: 3), () async {
-      _goToNext();
-    });
-    super.initState();
-  }
-
   void _goToNext() {
     if (GetIt.I.get<AppProvider>().loggined) {
       Navigator.of(context).popAndPushNamed(AppRoutes.apps);
@@ -31,10 +23,13 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           children: [
             const Spacer(),
-            SvgPicture.asset(
-              'assets/money-bag-pixel-art_505135-55.jpg.svg',
-              height: getVerticalSize(100),
-              width: getHorizontalSize(100),
+            GestureDetector(
+              onTap: _goToNext,
+              child: SvgPicture.asset(
+                'assets/money-bag-pixel-art_505135-55.jpg.svg',
+                height: getVerticalSize(100),
+                width: getHorizontalSize(100),
+              ),
             ),
             const Spacer(),
             Padding(

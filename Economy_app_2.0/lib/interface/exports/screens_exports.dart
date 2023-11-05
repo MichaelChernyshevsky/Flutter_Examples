@@ -4,7 +4,7 @@ export 'package:app_with_apps/core/localization/app_localization.dart';
 export 'package:app_with_apps/core/manager/get.it/app_provider.dart';
 export 'package:app_with_apps/core/models/class/historyelement_class.dart';
 export 'package:app_with_apps/core/models/enum/functions_enum.dart';
-export 'package:app_with_apps/core/models/enum/history_state.dart';
+export 'package:app_with_apps/core/models/enum/history_sort_state.dart';
 export 'package:app_with_apps/core/utils/constants/constants_uikit.dart';
 export 'package:app_with_apps/core/utils/enum/text_enum.dart';
 export 'package:app_with_apps/core/utils/utils.dart';

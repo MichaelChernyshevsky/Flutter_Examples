@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
         ),
       ),
-      title: AppLocalizations.current.appName,
+      title: AppLocalizations.current.empty,
       localizationsDelegates: const [
         AppLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,

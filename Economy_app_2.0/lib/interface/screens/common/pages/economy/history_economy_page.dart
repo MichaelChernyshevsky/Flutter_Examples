@@ -8,7 +8,7 @@ class HistoryEconomyPage extends StatefulWidget {
 }
 
 class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
-  HistoryState pageState = HistoryState.all;
+  Enum pageState = EconomySortState.all;
 
   final List<HistoryElement> initialList = [
     HistoryElement(title: 'title-1', count: 100),
@@ -20,20 +20,20 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
     HistoryElement(title: 'title-2', count: 2),
   ];
 
-  void setNewState({required HistoryState state}) {
+  void setNewState({required EconomySortState state}) {
     if (pageState != state) {
       setState(() => pageState = state);
     }
 
-    if (pageState == HistoryState.all) {
+    if (pageState == EconomySortState.all) {
       elements = initialList;
-    } else if (pageState == HistoryState.byDate) {
+    } else if (pageState == EconomySortState.byDate) {
       elements = initialList;
-    } else if (pageState == HistoryState.min) {
-    } else if (pageState == HistoryState.max) {}
+    } else if (pageState == EconomySortState.min) {
+    } else if (pageState == EconomySortState.max) {}
   }
 
-  Color getCurrentButtonColor({required HistoryState state}) {
+  Color getCurrentButtonColor({required EconomySortState state}) {
     if (state == pageState) {
       return UTILSConstants.purple;
     }
@@ -52,6 +52,12 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
             children: [
               Row(
                 children: [
+                  DropdownButton(
+                    value: GetIt.I.get<AppProvider>().sortIndex,
+                    items: GetIt.I.get<AppProvider>().sortsElements,
+                    onChanged: (value) => setState(() =>
+                        GetIt.I.get<AppProvider>().setSortIndex(index: value)),
+                  ),
                   CustomButton(
                     color: UTILSConstants.white,
                     text: AppLocalizations.current.add,
