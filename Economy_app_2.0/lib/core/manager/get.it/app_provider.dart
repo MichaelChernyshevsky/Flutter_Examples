@@ -15,46 +15,40 @@ class AppProvider extends ChangeNotifier {
     ToDoSortState.all,
   ];
 
+  void nextSort() {
+    if (appIs == Functions.economy) {
+      if (sortIndex < kindsSorts[0].length - 1) {
+        setSortIndex(index: sortIndex + 1);
+      } else if (sortIndex == kindsSorts[0].length - 1) {
+        setSortIndex(index: 0);
+      }
+    }
+  }
+
+  void prevSort() {
+    if (appIs == Functions.economy) {
+      if (sortIndex > 0) {
+        setSortIndex(index: sortIndex + 1);
+      } else if (sortIndex == 0) {
+        setSortIndex(index: kindsSorts[0].length - 1);
+      }
+    }
+  }
+
   void setSortIndex({required int index}) => sortsIndex[appIs.index] = index;
 
-  List<DropdownMenuItem> get sortsElements => kindsSorts[appIs.index];
+  String get getStateString => kindsSorts[appIs.index][sortIndex].toString();
 
-  List<List<DropdownMenuItem>> kindsSorts = [
+  List<List<int>> kindsSorts = [
     [
-      DropdownMenuItem(
-        value: 0,
-        child: Text(AppLocalizations.current.sortAll),
-      ),
-      DropdownMenuItem(
-        value: 1,
-        child: Text(AppLocalizations.current.sortByDate),
-      ),
-      DropdownMenuItem(
-        value: 2,
-        child: Text(AppLocalizations.current.sortMin),
-      ),
-      DropdownMenuItem(
-        value: 3,
-        child: Text(AppLocalizations.current.sortMax),
-      ),
+      1,
+      2,
+      3,
     ],
     [
-      DropdownMenuItem(
-        value: AppLocalizations.current.sortAll,
-        child: Text(AppLocalizations.current.sortAll),
-      ),
-      DropdownMenuItem(
-        value: AppLocalizations.current.sortByDate,
-        child: Text(AppLocalizations.current.sortByDate),
-      ),
-      DropdownMenuItem(
-        value: AppLocalizations.current.sortMax,
-        child: Text(AppLocalizations.current.sortMin),
-      ),
-      DropdownMenuItem(
-        value: AppLocalizations.current.sortMax,
-        child: Text(AppLocalizations.current.sortMax),
-      ),
+      4,
+      5,
+      6,
     ],
   ];
 

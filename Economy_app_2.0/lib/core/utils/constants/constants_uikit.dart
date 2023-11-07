@@ -10,6 +10,6 @@ class UTILSConstants {
   static Color get purple => Colors.purple;
   static Color get grey => Colors.grey;
   static Color get white => Colors.white;
-  static Color get black => Colors.white;
+  static Color get black => Colors.black;
   static Color get transparent => Colors.transparent;
 }

@@ -40,7 +40,17 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
     return UTILSConstants.grey;
   }
 
-  void goToCreate() => print('+');
+  void goToCreate() => setState(() {
+        print('+');
+      });
+
+  void nextSort() => setState(() {
+        GetIt.I.get<AppProvider>().nextSort();
+      });
+
+  void prevSort() => setState(() {
+        GetIt.I.get<AppProvider>().prevSort();
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +62,27 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
             children: [
               Row(
                 children: [
-                  DropdownButton(
-                    value: GetIt.I.get<AppProvider>().sortIndex,
-                    items: GetIt.I.get<AppProvider>().sortsElements,
-                    onChanged: (value) => setState(() =>
-                        GetIt.I.get<AppProvider>().setSortIndex(index: value)),
+                  CustomContainer(
+                    color: UTILSConstants.black,
+                    widget: Row(
+                      children: [
+                        CustomButton(
+                          color: UTILSConstants.purple,
+                          text: AppLocalizations.current.back,
+                          tap: prevSort,
+                        ),
+                        CustomContainer(
+                          color: UTILSConstants.grey,
+                          widget:
+                              Text(GetIt.I.get<AppProvider>().getStateString),
+                        ),
+                        CustomButton(
+                          color: UTILSConstants.purple,
+                          text: AppLocalizations.current.go,
+                          tap: nextSort,
+                        ),
+                      ],
+                    ),
                   ),
                   CustomButton(
                     color: UTILSConstants.white,
@@ -119,3 +145,41 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
             //     ],
             //   ),
             // ),
+
+
+
+
+
+
+            import 'package:imaigination_mobile/constants/exports/pages_export.dart';
+
+class Lable extends StatelessWidget {
+  const Lable({super.key, required this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: ColorConstant.blueGray900,
+        borderRadius: BorderRadius.circular(
+          getHorizontalSize(8),
+        ),
+      ),
+      padding: getPadding(all: 12),
+      width: getHorizontalSize(343),
+      child: Row(
+        children: [
+          Flexible(
+            child: Text(
+              text,
+              textAlign: TextAlign.left,
+              style: AppStyle.txtSoraLight14.copyWith(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
