@@ -32,19 +32,19 @@ get height {
 }
 
 ///This method is used to set padding/margin (for the left and Right side) & width of the screen or widget according to the Viewport width.
-double getHorizontalSize(double px) {
+double getWidth(double px) {
   return ((px * width) / FIGMAWIDTH);
 }
 
 ///This method is used to set padding/margin (for the top and bottom side) & height of the screen or widget according to the Viewport height.
-double getVerticalSize(double px) {
+double getHeight(double px) {
   return ((px * height) / (FIGMAHEIGHT - FIGMASTATUSBAR));
 }
 
 ///This method is used to set smallest px in image height and width
 double getSize(double px) {
-  var height = getVerticalSize(px);
-  var width = getHorizontalSize(px);
+  var height = getHeight(px);
+  var width = getWidth(px);
   if (height < width) {
     return height.toInt().toDouble();
   } else {
@@ -106,16 +106,16 @@ EdgeInsetsGeometry getMarginOrPadding({
     bottom = all;
   }
   return EdgeInsets.only(
-    left: getHorizontalSize(
+    left: getWidth(
       left ?? 0,
     ),
-    top: getVerticalSize(
+    top: getHeight(
       top ?? 0,
     ),
-    right: getHorizontalSize(
+    right: getWidth(
       right ?? 0,
     ),
-    bottom: getVerticalSize(
+    bottom: getHeight(
       bottom ?? 0,
     ),
   );

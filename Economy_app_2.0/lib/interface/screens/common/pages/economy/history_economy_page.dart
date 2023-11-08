@@ -1,3 +1,4 @@
+import 'package:app_with_apps/core/models/class/sort_parametrs_class.dart';
 import 'package:app_with_apps/interface/exports/screens_exports.dart';
 
 class HistoryEconomyPage extends StatefulWidget {
@@ -8,29 +9,33 @@ class HistoryEconomyPage extends StatefulWidget {
 }
 
 class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
+  // ignore: lines_longer_than_80_chars
+  final List<SortParametrs> sortParametrs =
+      GetIt.I.get<AppProvider>().sortParametrs;
+
   Enum pageState = EconomySortState.all;
 
-  final List<HistoryElement> initialList = [
-    HistoryElement(title: 'title-1', count: 100),
-    HistoryElement(title: 'title-2', count: 2),
-  ];
+  List<HistoryElement> elements = [];
 
-  List<HistoryElement> elements = [
-    HistoryElement(title: 'title-1', count: 100),
-    HistoryElement(title: 'title-2', count: 2),
-  ];
+  @override
+  void initState() {
+    setState(() {
+      elements = [];
+    });
+    super.initState();
+  }
 
   void setNewState({required EconomySortState state}) {
     if (pageState != state) {
       setState(() => pageState = state);
     }
 
-    if (pageState == EconomySortState.all) {
-      elements = initialList;
-    } else if (pageState == EconomySortState.byDate) {
-      elements = initialList;
-    } else if (pageState == EconomySortState.min) {
-    } else if (pageState == EconomySortState.max) {}
+    // if (pageState == EconomySortState.all) {
+    //   elements = initialList;
+    // } else if (pageState == EconomySortState.byDate) {
+    //   elements = initialList;
+    // } else if (pageState == EconomySortState.min) {
+    // } else if (pageState == EconomySortState.max) {}
   }
 
   Color getCurrentButtonColor({required EconomySortState state}) {
@@ -40,17 +45,8 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
     return UTILSConstants.grey;
   }
 
-  void goToCreate() => setState(() {
-        print('+');
-      });
-
-  void nextSort() => setState(() {
-        GetIt.I.get<AppProvider>().nextSort();
-      });
-
-  void prevSort() => setState(() {
-        GetIt.I.get<AppProvider>().prevSort();
-      });
+  void goToCreate() =>
+      Navigator.of(context).pushNamed(AppRoutes.addSpendingScreen);
 
   @override
   Widget build(BuildContext context) {
@@ -64,25 +60,7 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
                 children: [
                   CustomContainer(
                     color: UTILSConstants.black,
-                    widget: Row(
-                      children: [
-                        CustomButton(
-                          color: UTILSConstants.purple,
-                          text: AppLocalizations.current.back,
-                          tap: prevSort,
-                        ),
-                        CustomContainer(
-                          color: UTILSConstants.grey,
-                          widget:
-                              Text(GetIt.I.get<AppProvider>().getStateString),
-                        ),
-                        CustomButton(
-                          color: UTILSConstants.purple,
-                          text: AppLocalizations.current.go,
-                          tap: nextSort,
-                        ),
-                      ],
-                    ),
+                    widget: const Row(),
                   ),
                   CustomButton(
                     color: UTILSConstants.white,
@@ -92,7 +70,7 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
                 ],
               ),
               SizedBox(
-                height: getVerticalSize(100),
+                height: getHeight(100),
                 child: ListView.builder(
                   itemCount: elements.length,
                   itemBuilder: (context, index) {
@@ -150,36 +128,3 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
 
 
 
-
-            import 'package:imaigination_mobile/constants/exports/pages_export.dart';
-
-class Lable extends StatelessWidget {
-  const Lable({super.key, required this.text});
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: ColorConstant.blueGray900,
-        borderRadius: BorderRadius.circular(
-          getHorizontalSize(8),
-        ),
-      ),
-      padding: getPadding(all: 12),
-      width: getHorizontalSize(343),
-      child: Row(
-        children: [
-          Flexible(
-            child: Text(
-              text,
-              textAlign: TextAlign.left,
-              style: AppStyle.txtSoraLight14.copyWith(color: Colors.white),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}

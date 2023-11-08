@@ -44,8 +44,8 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
       bottomNavigationBar: Container(
-        width: getHorizontalSize(100),
-        margin: const EdgeInsets.all(30),
+        width: getWidth(100),
+        margin: const EdgeInsets.all(20),
         height: size.width * .155,
         decoration: BoxDecoration(
           color: UTILSConstants.white,

@@ -1,8 +1,12 @@
+import 'package:app_with_apps/core/models/class/sort_parametrs_class.dart';
 import 'package:app_with_apps/core/models/enum/todo_sort_state.dart';
 import 'package:app_with_apps/interface/exports/screens_exports.dart';
 
 class AppProvider extends ChangeNotifier {
+  // app
   bool loggined = true;
+
+  // history
 
   Functions appIs = Functions.economy;
 
@@ -15,29 +19,28 @@ class AppProvider extends ChangeNotifier {
     ToDoSortState.all,
   ];
 
-  void nextSort() {
-    if (appIs == Functions.economy) {
-      if (sortIndex < kindsSorts[0].length - 1) {
-        setSortIndex(index: sortIndex + 1);
-      } else if (sortIndex == kindsSorts[0].length - 1) {
-        setSortIndex(index: 0);
-      }
-    }
-  }
-
-  void prevSort() {
-    if (appIs == Functions.economy) {
-      if (sortIndex > 0) {
-        setSortIndex(index: sortIndex + 1);
-      } else if (sortIndex == 0) {
-        setSortIndex(index: kindsSorts[0].length - 1);
-      }
-    }
-  }
-
   void setSortIndex({required int index}) => sortsIndex[appIs.index] = index;
 
   String get getStateString => kindsSorts[appIs.index][sortIndex].toString();
+
+  List<SortParametrs> sortParametrs = [
+    SortParametrs(
+      icon: const Icon(Icons.arrow_back_ios_new),
+      title: AppLocalizations.current.sortAll,
+    ),
+    SortParametrs(
+      icon: const Icon(Icons.arrow_back_ios_new),
+      title: AppLocalizations.current.sortByDate,
+    ),
+    SortParametrs(
+      icon: const Icon(Icons.arrow_back_ios_new),
+      title: AppLocalizations.current.sortMin,
+    ),
+    SortParametrs(
+      icon: const Icon(Icons.arrow_back_ios_new),
+      title: AppLocalizations.current.sortMax,
+    ),
+  ];
 
   List<List<int>> kindsSorts = [
     [
@@ -87,4 +90,6 @@ class AppProvider extends ChangeNotifier {
       appIs = Functions.todo;
     }
   }
+
+  //
 }

@@ -27,8 +27,8 @@ class _SplashScreenState extends State<SplashScreen> {
               onTap: _goToNext,
               child: SvgPicture.asset(
                 'assets/money-bag-pixel-art_505135-55.jpg.svg',
-                height: getVerticalSize(100),
-                width: getHorizontalSize(100),
+                height: getHeight(100),
+                width: getWidth(100),
               ),
             ),
             const Spacer(),
