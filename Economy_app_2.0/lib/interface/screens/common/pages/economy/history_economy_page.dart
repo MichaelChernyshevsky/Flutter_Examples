@@ -47,16 +47,12 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
   }
 
   Future goToCreate() async {
-    // ignore: avoid_print
-    print('-' * 90);
-    final name = await Navigator.push(
+    final HistoryElement element = await Navigator.push(
       context,
       MaterialPageRoute(builder: AddSpedingScreen.builder),
     );
     // ignore: avoid_print
-    print(name);
-    // ignore: avoid_print
-    print('+' * 90);
+    debugPrint(element.title);
   }
 
   @override

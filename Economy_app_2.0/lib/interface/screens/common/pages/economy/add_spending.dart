@@ -6,7 +6,10 @@ class AddSpedingScreen extends StatefulWidget {
   const AddSpedingScreen({super.key});
 
   static Widget builder(BuildContext context) {
-    return const AddSpedingScreen();
+    return BlocProvider<EconomyBloc>(
+      create: (context) => EconomyBloc(),
+      child: const AddSpedingScreen(),
+    );
   }
 
   @override
@@ -15,6 +18,10 @@ class AddSpedingScreen extends StatefulWidget {
 
 class _AddSpedingScreenState extends State<AddSpedingScreen> {
   EconomyBloc? bloc;
+  TextEditingController contorllerTitle = TextEditingController();
+  TextEditingController contorllerCost = TextEditingController();
+  HistoryElement? element;
+  Color buttonColor = Colors.amber;
 
   @override
   void initState() {
@@ -22,8 +29,43 @@ class _AddSpedingScreenState extends State<AddSpedingScreen> {
     super.initState();
   }
 
-  void addSpending() => bloc!.add(AddSpending(title: 'title'));
-  // Navigator.of(context).pop();
+  HistoryElement? createElement() {
+    if (contorllerTitle.text.isEmpty) {
+      return null;
+    }
+    if (contorllerCost.text.isEmpty) {
+      return null;
+    }
+    final createdElement = HistoryElement(
+      title: contorllerTitle.text,
+      count: int.parse(contorllerCost.text),
+    );
+
+    setState(() {
+      element = createdElement;
+    });
+
+    return createdElement;
+  }
+
+  void addSpending() {
+    final element = createElement();
+    if (element != null) {
+      bloc!.add(
+        AddSpending(element: element),
+      );
+    } else {
+      setState(() {
+        buttonColor = Colors.red;
+      });
+    }
+  }
+
+  void goBack() {
+    Navigator.of(context).pop(element);
+  }
+
+  void onError() => debugPrint('error adding');
 
   @override
   Widget build(BuildContext context) {
@@ -33,20 +75,28 @@ class _AddSpedingScreenState extends State<AddSpedingScreen> {
           text: AppLocalizations.current.addSpending,
         ),
       ),
-      body: BlocListener<EconomyBloc, EconomyBlocState>(
-        listener: (context, state) {
-          if (state is BlocError) {
-            debugPrint('error adding');
-          } else if (state is BlocSuccess) {
-            Navigator.of(context).pop('success');
-          }
-        },
-        child: Center(
-          child: CustomButton(
-            color: Colors.amber,
-            tap: addSpending,
-            text: AppLocalizations.current.add,
-          ),
+      body: Center(
+        child: Column(
+          children: [
+            const Text('paste title'),
+            TextFormField(controller: contorllerTitle),
+            const Text('paste count'),
+            TextFormField(controller: contorllerCost),
+            BlocListener<EconomyBloc, EconomyBlocState>(
+              listener: (context, state) {
+                if (state is BlocError) {
+                  onError();
+                } else if (state is BlocSuccess) {
+                  goBack();
+                }
+              },
+              child: CustomButton(
+                color: Colors.amber,
+                tap: addSpending,
+                text: AppLocalizations.current.add,
+              ),
+            ),
+          ],
         ),
       ),
     );
