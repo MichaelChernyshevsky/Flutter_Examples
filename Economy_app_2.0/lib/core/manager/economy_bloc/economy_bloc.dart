@@ -1,14 +1,15 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member
+import 'package:app_with_apps/interface/exports/screens_exports.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'event.dart';
 part 'state.dart';
 
-class SomeBloc extends Bloc<EconomyBlocEvent, EconomyBlocState> {
-  SomeBloc() : super(NotesInitial()) {
+class EconomyBloc extends Bloc<EconomyBlocEvent, EconomyBlocState> {
+  EconomyBloc() : super(NotesInitial()) {
     on<DeleteSpendingEvent>(_deleteSpending);
-    on<AddSpending>(_createFolder);
+    on<AddSpending>(_addSpending);
     on<GetSpendingsEvent>(_getSpending);
   }
 
@@ -26,13 +27,15 @@ class SomeBloc extends Bloc<EconomyBlocEvent, EconomyBlocState> {
     }
   }
 
-  Future<void> _createFolder(
+  Future<void> _addSpending(
     AddSpending event,
     Emitter<EconomyBlocState> state,
   ) async {
-    try {} catch (error) {
-      emit(BlocError());
-    }
+    debugPrint(event.title);
+    emit(BlocSuccess());
+    // try {} catch (error) {
+    //   emit(BlocError());
+    // }
   }
 
   Future<void> _getSpending(

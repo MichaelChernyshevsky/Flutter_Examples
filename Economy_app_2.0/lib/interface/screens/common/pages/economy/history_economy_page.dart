@@ -1,5 +1,6 @@
 import 'package:app_with_apps/core/models/class/sort_parametrs_class.dart';
 import 'package:app_with_apps/interface/exports/screens_exports.dart';
+import 'package:app_with_apps/interface/screens/common/pages/economy/add_spending.dart';
 
 class HistoryEconomyPage extends StatefulWidget {
   const HistoryEconomyPage({super.key});
@@ -45,8 +46,18 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
     return UTILSConstants.grey;
   }
 
-  void goToCreate() =>
-      Navigator.of(context).pushNamed(AppRoutes.addSpendingScreen);
+  Future goToCreate() async {
+    // ignore: avoid_print
+    print('-' * 90);
+    final name = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: AddSpedingScreen.builder),
+    );
+    // ignore: avoid_print
+    print(name);
+    // ignore: avoid_print
+    print('+' * 90);
+  }
 
   @override
   Widget build(BuildContext context) {

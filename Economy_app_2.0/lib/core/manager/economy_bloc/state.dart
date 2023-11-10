@@ -18,3 +18,8 @@ class BlocError extends EconomyBlocState {
   @override
   List<Object?> get props => [];
 }
+
+class BlocSuccess extends EconomyBlocState {
+  @override
+  List<Object?> get props => [];
+}
