@@ -31,7 +31,7 @@ class EconomyBloc extends Bloc<EconomyBlocEvent, EconomyBlocState> {
     AddSpending event,
     Emitter<EconomyBlocState> state,
   ) async {
-    debugPrint(event.title);
+    debugPrint(event.element.title);
     emit(BlocSuccess());
     // try {} catch (error) {
     //   emit(BlocError());

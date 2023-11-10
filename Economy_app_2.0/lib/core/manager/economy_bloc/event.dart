@@ -18,8 +18,8 @@ class DeleteSpendingEvent extends EconomyBlocEvent {
 }
 
 class AddSpending extends EconomyBlocEvent {
-  String title;
-  AddSpending({required this.title});
+  HistoryElement element;
+  AddSpending({required this.element});
   @override
-  List<Object?> get props => [title];
+  List<Object?> get props => [element];
 }
