@@ -1,6 +1,8 @@
+import 'package:app_with_apps/core/manager/economy_bloc/economy_bloc.dart';
 import 'package:app_with_apps/core/models/class/sort_parametrs_class.dart';
 import 'package:app_with_apps/interface/exports/screens_exports.dart';
 import 'package:app_with_apps/interface/screens/common/pages/economy/add_spending.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HistoryEconomyPage extends StatefulWidget {
   const HistoryEconomyPage({super.key});
@@ -15,14 +17,19 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
       GetIt.I.get<AppProvider>().sortParametrs;
 
   Enum pageState = EconomySortState.all;
-
   List<HistoryElement> elements = [];
+  bool loading = true;
+
+  EconomyBloc? bloc;
 
   @override
   void initState() {
     setState(() {
       elements = [];
     });
+    bloc = BlocProvider.of<EconomyBloc>(context);
+    bloc!.add(GetSpendingsEvent());
+
     super.initState();
   }
 
@@ -47,23 +54,39 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
   }
 
   Future goToCreate() async {
-    final HistoryElement element = await Navigator.push(
+    final element = await Navigator.push(
       context,
       MaterialPageRoute(builder: AddSpedingScreen.builder),
     );
-    // ignore: avoid_print
-    debugPrint(element.title);
+
+    if (element != null) {
+      setState(
+        () => elements.add(element),
+      );
+    }
   }
+
+  void onError() => debugPrint('error adding');
+
+  void setElements(List<HistoryElement> elementsBloc) => setState(() {
+        elements = elementsBloc;
+        loading = false;
+      });
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: getPadding(top: 10),
+          padding: getPadding(
+            top: 10,
+            right: 10,
+            left: 10,
+          ),
           child: Column(
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomContainer(
                     color: UTILSConstants.black,
@@ -77,12 +100,23 @@ class _HistoryEconomyPageState extends State<HistoryEconomyPage> {
                 ],
               ),
               SizedBox(
-                height: getHeight(100),
-                child: ListView.builder(
-                  itemCount: elements.length,
-                  itemBuilder: (context, index) {
-                    return Note(element: elements[index]);
+                height: getHeight(620),
+                child: BlocListener<EconomyBloc, EconomyBlocState>(
+                  listener: (context, state) {
+                    if (state is BlocError) {
+                      onError();
+                    } else if (state is GetHistorySuccess) {
+                      setElements(state.elements);
+                    }
                   },
+                  child: loading
+                      ? const CircularProgressIndicator()
+                      : ListView.builder(
+                          itemCount: elements.length,
+                          itemBuilder: (context, index) {
+                            return Note(element: elements[index]);
+                          },
+                        ),
                 ),
               ),
             ],

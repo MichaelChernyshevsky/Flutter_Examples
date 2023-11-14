@@ -14,6 +14,14 @@ class DeleteSucess extends EconomyBlocState {
   List<Object?> get props => [];
 }
 
+class GetHistorySuccess extends EconomyBlocState {
+  GetHistorySuccess(this.elements);
+
+  final List<HistoryElement> elements;
+  @override
+  List<Object?> get props => [elements];
+}
+
 class BlocError extends EconomyBlocState {
   @override
   List<Object?> get props => [];

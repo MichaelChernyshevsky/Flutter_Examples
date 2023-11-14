@@ -13,6 +13,14 @@ class EconomyBloc extends Bloc<EconomyBlocEvent, EconomyBlocState> {
     on<GetSpendingsEvent>(_getSpending);
   }
 
+  List<HistoryElement> history = [
+    HistoryElement(title: 'title', count: 1),
+    HistoryElement(title: 'title', count: 1),
+    HistoryElement(title: 'title', count: 1),
+    HistoryElement(title: 'title', count: 1),
+    HistoryElement(title: 'title', count: 1),
+  ];
+
   // ServiceApiNotes service = ServiceApiNotes();
 
   Future<void> _deleteSpending(
@@ -31,7 +39,7 @@ class EconomyBloc extends Bloc<EconomyBlocEvent, EconomyBlocState> {
     AddSpending event,
     Emitter<EconomyBlocState> state,
   ) async {
-    debugPrint(event.element.title);
+    history.add(event.element);
     emit(BlocSuccess());
     // try {} catch (error) {
     //   emit(BlocError());
@@ -44,7 +52,7 @@ class EconomyBloc extends Bloc<EconomyBlocEvent, EconomyBlocState> {
   ) async {
     try {
       // await service.deleteFolder(event.id);
-      emit(DeleteSucess());
+      emit(GetHistorySuccess(history));
     } catch (error) {
       emit(BlocError());
     }

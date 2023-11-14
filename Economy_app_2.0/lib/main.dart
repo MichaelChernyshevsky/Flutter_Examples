@@ -1,4 +1,5 @@
 import 'package:app_with_apps/core/localization/app_localization.dart';
+import 'package:app_with_apps/core/manager/economy_bloc/economy_bloc.dart';
 // import 'package:app_with_apps/core/manager/bloc/economy_bloc.dart';
 import 'package:app_with_apps/core/manager/get.it/app_provider.dart';
 import 'package:app_with_apps/core/manager/provider/ordinaryProvider.dart';
@@ -15,20 +16,19 @@ void main() {
   GetIt.I.registerSingleton<AppProvider>(AppProvider());
 
   runApp(
-    // MultiBlocProvider(
-    //   providers: const [
-    //     // BlocProvider<SomeBloc>(create: (context) => SomeBloc()),
-    //   ],
-    //   child:
-    MultiProvider(
+    MultiBlocProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => OrdinaryProvider(),
-        ),
+        BlocProvider<EconomyBloc>(create: (context) => EconomyBloc()),
       ],
-      child: const MyApp(),
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => OrdinaryProvider(),
+          ),
+        ],
+        child: const MyApp(),
+      ),
     ),
-    // ),
   );
 }
 
@@ -59,7 +59,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
-
